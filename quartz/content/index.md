@@ -1,5 +1,5 @@
 ---
-title: digital garden / portfolio
+title: a digital garden
 
 tags:
   - identity
@@ -7,6 +7,12 @@ tags:
 
 date: 2026-05-16
 ---
+
+>### read my latest work :)
+- a [paper2code](paper2code.md) project: in case of [implementing Sampling-Bias-Corrected Neural Modeling for Large Corpus Item Recommendations](https://storage.googleapis.com/gweb-research2023-media/pubtools/5716.pdf) to end to end film recommendations based on [letterboxd](https://letterboxd.com/) account. [click here to see the results](twin_towers.md)
+
+
+
 
 >### whats this:
 >a [digital garden](https://carabros.medium.com/what-is-a-digital-garden-075628a2f312), raw cumulative logs of my thoughts and experiences.
