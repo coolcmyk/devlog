@@ -1,13 +1,14 @@
-import { FullSlug, joinSegments } from "../../util/path"
+import { FullSlug } from "../../util/path"
 import { QuartzEmitterPlugin } from "../types"
 
 // @ts-ignore
 import spaRouterScript from "../../components/scripts/spa.inline"
 // @ts-ignore
 import popoverScript from "../../components/scripts/popover.inline"
-import styles from "../../styles/custom.scss"
+import customStyles from "../../styles/custom.scss"
 import popoverStyle from "../../components/styles/popover.scss"
 import { BuildCtx } from "../../util/ctx"
+import { joinSegments } from "../../util/path"
 import { QuartzComponent } from "../../components/types"
 import {
   googleFontHref,
@@ -18,6 +19,8 @@ import {
 import { Features, transform } from "lightningcss"
 import { transform as transpile } from "esbuild"
 import { write } from "./helpers"
+import fs from "node:fs/promises"
+import path from "node:path"
 
 type ComponentResources = {
   css: string[]
@@ -272,6 +275,32 @@ export const ComponentResources: QuartzEmitterPlugin = () => {
     name: "ComponentResources",
     async *emit(ctx, _content, _resources) {
       const cfg = ctx.cfg.configuration
+      const fontFiles = [
+        "maple-mono-latin-400-normal",
+        "maple-mono-latin-400-italic",
+        "maple-mono-latin-600-normal",
+        "maple-mono-latin-600-italic",
+        "maple-mono-latin-700-normal",
+      ]
+      for (const baseName of fontFiles) {
+        for (const ext of ["woff2", "woff"]) {
+          const fontPath = path.resolve(
+            process.cwd(),
+            "node_modules",
+            "@fontsource",
+            "maple-mono",
+            "files",
+            `${baseName}.${ext}`,
+          )
+          const content = await fs.readFile(fontPath)
+          yield write({
+            ctx,
+            slug: joinSegments("static", `${baseName}`) as FullSlug,
+            ext: `.${ext}`,
+            content,
+          })
+        }
+      }
       // component specific scripts and styles
       const componentResources = getComponentResources(ctx)
       let googleFontsStyleSheet = ""
@@ -323,11 +352,55 @@ export const ComponentResources: QuartzEmitterPlugin = () => {
       // that everyone else had the chance to register a listener for it
       addGlobalPageResources(ctx, componentResources)
 
+      const fontStylesheet = `
+@font-face {
+  font-family: "Maple Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/static/maple-mono-latin-400-normal.woff2") format("woff2"),
+       url("/static/maple-mono-latin-400-normal.woff") format("woff");
+}
+@font-face {
+  font-family: "Maple Mono";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/static/maple-mono-latin-400-italic.woff2") format("woff2"),
+       url("/static/maple-mono-latin-400-italic.woff") format("woff");
+}
+@font-face {
+  font-family: "Maple Mono";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/static/maple-mono-latin-600-normal.woff2") format("woff2"),
+       url("/static/maple-mono-latin-600-normal.woff") format("woff");
+}
+@font-face {
+  font-family: "Maple Mono";
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/static/maple-mono-latin-600-italic.woff2") format("woff2"),
+       url("/static/maple-mono-latin-600-italic.woff") format("woff");
+}
+@font-face {
+  font-family: "Maple Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/static/maple-mono-latin-700-normal.woff2") format("woff2"),
+       url("/static/maple-mono-latin-700-normal.woff") format("woff");
+}
+`;
+
       const stylesheet = joinStyles(
         ctx.cfg.configuration.theme,
+        fontStylesheet,
         googleFontsStyleSheet,
         ...componentResources.css,
-        styles,
+        customStyles,
       )
 
       const [prescript, postscript] = await Promise.all([

@@ -2,8 +2,10 @@
 title: Fiction Books
 
 tags:
+  - andy weir
+  - haruki murakami
+  - sci-fi
   - books
-  - thoughts
 
 date: 2023-05-01
 --- 
@@ -19,14 +21,6 @@ Progress: Chapter 10 / 49
 
 Kafka Tamura is a young man that was running away from his abusive father. i don't really know that much about his father background yet, at this point of the story, the novel focuses more about his experiences while running away, meeting his comfort place. While in parallel, it takes the readers into the aftermath of Nakata, the collector of lost cats after the bizarre incident (which was a military secret and investigated by the US intelligence, we also get shown the military documents throughout the chapter progression) that happens to him many years ago, wiping out his memory, and his other cognitive abilities, even though he was considered one of the brightest mind before the incident.
 
-## The Alchemist by Paulo Coelho
-
-<img src="https://thesciencesurvey.com/wp-content/uploads/2023/02/IMG-20230210-WA0000.jpeg" 
-style="max-width:80%; height:80%;"
-/>
-
-Progress: Chapter x / x
-
 
 ## The Martian by Andy Weir
 
@@ -34,6 +28,15 @@ Progress: Chapter x / x
 style="max-width:80%; height:auto;"
 />
 
+Progress: Chapter 8 / 26
+
+Mark Watney is dead, well thats what his own crewmates believe, but the truth is he's still alive and stranded on Mars, trying to survive from potatoes that NASA prepared for thanksgiving. This novel is the first of Sci-fi books that i've started to read seriously, really interesting approach on survival-like novel, similar to Dr Stone (Anime)
+
+
+## The Alchemist by Paulo Coelho
+
+<img src="https://thesciencesurvey.com/wp-content/uploads/2023/02/IMG-20230210-WA0000.jpeg" 
+  style="max-width:80%; height:80%;"
+/>
+
 Progress: Chapter x / x
-
-

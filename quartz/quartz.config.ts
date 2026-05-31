@@ -16,16 +16,19 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "en-US",
-    baseUrl: "ky0.dev",
+    baseUrl: "coolcmyk.dev",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
     theme: {
-      fontOrigin: "googleFonts",
+      fontOrigin: "local",
       cdnCaching: true,
       typography: {
-        header: "JetBrains Mono",
-        body: "JetBrains Mono",
-        code: "JetBrains Mono",
+        header: "Maple Mono",
+        body: "Maple Mono",
+        code: "Maple Mono",
+        // header: "JetBrains Mono",
+        // body: "JetBrains Mono",
+        // code: "JetBrains Mono",
       },
       colors: {
         lightMode: {
@@ -41,11 +44,11 @@ const config: QuartzConfig = {
         },
         darkMode: {
           light: "#161618",
-          lightgray: "#393639",
-          gray: "#646464",
+          lightgray: "#2a2a2e",    // softer surface layer (less purple-gray clash)
+          gray: "#6a6a73",         // neutral mid-gray (less flat, more readable)
           darkgray: "#d4d4d4",
           dark: "#ebebec",
-          secondary: "#7b97aa",
+          secondary: "#7fa2b8",    // cooler steel-blue (clean devlog accent)
           tertiary: "#84a59d",
           highlight: "rgba(143, 159, 169, 0.15)",
           textHighlight: "#b3aa0288",

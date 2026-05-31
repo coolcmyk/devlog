@@ -8,7 +8,7 @@ tags:
 date: 2026-05-16
 ---
 
->### read my latest work :)
+>### read my latest work
 - a [paper2code](paper2code.md) project: in case of [implementing Sampling-Bias-Corrected Neural Modeling for Large Corpus Item Recommendations](https://storage.googleapis.com/gweb-research2023-media/pubtools/5716.pdf) to end to end film recommendations based on [letterboxd](https://letterboxd.com/) account. [click here to see the results](twin_towers.md)
 
 
@@ -19,6 +19,8 @@ date: 2026-05-16
 
 >### whoami: 
 >Ryan Adidaru (often known on github as [coolcmyk](https://github.com/coolcmyk))
+
+>20 yo, pursuing a bachelor [CE](https://en.wikipedia.org/wiki/Computer_engineering) degree @ [universitas indonesia](https://ui.ac.id)
 
 >### hobbies: 
 > - **reading** ([arXiv papers](arxiv_papers.md), [books](books.md))

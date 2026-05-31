@@ -62,6 +62,24 @@ export async function getSatoriFonts(headerFont: FontSpecification, bodyFont: Fo
     ...bodyFonts.filter((font): font is NonNullable<typeof font> => font !== null),
   ]
 
+  if (fonts.length === 0) {
+    const fallbackName = "Noto Sans"
+    const fallbackWeights: FontWeight[] = [400, 700]
+    const fallbackFonts = await Promise.all(
+      fallbackWeights.map(async (weight) => {
+        const data = await fetchTtf(fallbackName, weight)
+        if (!data) return null
+        return {
+          name: fallbackName,
+          data,
+          weight,
+          style: "normal" as const,
+        }
+      }),
+    )
+    return fallbackFonts.filter((font): font is NonNullable<typeof font> => font !== null)
+  }
+
   return fonts
 }
 
@@ -75,6 +93,9 @@ export async function fetchTtf(
   rawFontName: string,
   weight: FontWeight,
 ): Promise<Buffer<ArrayBufferLike> | undefined> {
+  if (rawFontName === "Maple Mono") {
+    return
+  }
   const fontName = rawFontName.replaceAll(" ", "+")
   const cacheKey = `${fontName}-${weight}`
   const cacheDir = path.join(QUARTZ, ".quartz-cache", "fonts")
